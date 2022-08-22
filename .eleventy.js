@@ -1,4 +1,5 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const sitemap = require("@quasibit/eleventy-plugin-sitemap");
 
 module.exports = function(eleventyConfig) {
     
@@ -6,6 +7,13 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addWatchTarget("./src/assets/");
 
     eleventyConfig.addPlugin(syntaxHighlight);
+    eleventyConfig.addPlugin(sitemap, {
+        lastModifiedProperty: "lastupdate",
+
+        sitemap: {
+          hostname: "https://www.annalytic.com",
+        },
+      });
 
     return {
         dir: {
