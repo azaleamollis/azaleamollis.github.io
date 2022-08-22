@@ -1,5 +1,5 @@
 {
-    "layout": "admin",
+    "layout": "null",
     "eleventyExcludeFromCollections": "true",
     "tags": "admin"
 }
