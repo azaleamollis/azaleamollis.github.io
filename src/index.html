@@ -1,0 +1,17 @@
+---
+title: Annalytic
+layout: base
+---
+<div class="blog-container">
+    <ul class="post-list">
+    {%- for post in collections.posts reversed -%}
+        <li class="post-list-item">
+            <h2 class="post-title"><a class="post-title-link" href="{{ post.url }}">{{ post.data.title }}</a></h2>
+            <h3 class="post-subtitle">{{ post.data.subtitle }}</h3>
+            <p class="post-date">Published on {{ post.data.date | date: "%b %d, %Y" }} {% if post.data.lastupdate %} (Last updated on {{ post.data.lastupdate | date: "%b %d, %Y" }}) {% endif %}</p>
+            <p class="post-container">{{ post.data.excerpt }}</p>
+            <p><a class="read-more-link" href="{{ post.url }}">Read more &raquo;</a></p>
+        </li>
+    {%- endfor -%}
+    </ul>
+</div>

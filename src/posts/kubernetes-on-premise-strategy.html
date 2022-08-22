@@ -1,0 +1,42 @@
+---
+title:  "When is it worth deploying Kubernetes on-premises?"
+subtitle: "A brief look into the use cases of the Container-as-a-Service architecture"
+date:   "2019-08-16"
+permalink: "/kubernetes-on-premise-strategy.html"
+excerpt: "Kubernetes is a container orchestration platform that makes it possible to deploy applications to a cluster of computers. Although Kubernetes is frequently used in the cloud, it also works well in enterprise environments. There are a couple of scenarios when deploying Kubernetes on-premises is a reasonable choice as opposed to relying on cloud platforms."
+ogimg: "og-containers.jpg"
+---
+<p>Kubernetes is a container orchestration platform that makes it possible to deploy applications to a cluster of computers. Although Kubernetes is frequently used in the cloud, it also works well in enterprise environments. There are a couple of scenarios when deploying Kubernetes on-premises is a reasonable choice as opposed to relying on cloud platforms.</p>
+<h2>The Container-as-a-Service model</h2>
+<p>The Container-as-a-Service (CaaS) architecture allows developers to make use of container-based virtualization. Containers are different from virtual machines, as they virtualize operating systems rather than hardware configurations. As they don’t have their own kernel, they share the OS of the host machine with other containers.</p>
+<p>Containers package app-level code and dependencies together and run as isolated processes. Their main advantages are as follows:</p>
+<ul>
+<li>easy portability,</li>
+<li>small size,</li>
+<li>better performance (compared to VMs),</li>
+<li>scalability,</li>
+<li>and platform-independence.</li>
+</ul>
+<p>Containers are an especially popular choice of software for microservices. The most well-known Container-as-a-Service platform is Docker.</p>
+<p>Kubernetes takes containerization to the next level. It comes into the picture when you work with a huge number of containers. Kubernetes lets you logically group containers and deploys them to a computer cluster consisting of one master and several working nodes.</p>
+<p>With Kubernetes, your application doesn’t rely on one single machine and you don’t have to worry about uptime. Kubernetes automatically distributes your containers across the cluster, so you can be sure that your app is up and running all the time.</p>
+<h2>Deployment strategies for Kubernetes</h2>
+<p>You can run Kubernetes on <a href="https://kubernetes.io/docs/setup/" target="_blank">multiple different platforms</a>. For example, you can:</p>
+<ul>
+<li>use managed Kubernetes clusters offered by public cloud platforms,</li>
+<li>create a custom cloud solution making use of private or hybrid cloud architectures,</li>
+<li>or deploy it to your on-premise data center.</li>
+</ul>
+<p>Companies, especially start-ups, frequently deploy container-based applications to the cloud, as it comes with many benefits. For instance, you can use pre-made cloud APIs, don’t have to worry about server maintenance, and can ensure high availability.</p>
+<p>However, as your application scales, costs of pay-as-you-go cloud services can rapidly grow. You might also face problems like security and privacy issues on certain public cloud platforms.</p>
+<p>Under certain circumstances, cloud deployment is simply not worth the effort, as it comes with too many risks and costs. Bringing containers on-premises can be a good decision when your application:</p>
+<ul>
+<li>interoperates with other on-premise applications or databases,</li>
+<li>is a legacy monolithic application that would be too hard to move to the cloud,</li>
+<li>becomes so popular that cloud server costs get too high,</li>
+<li>relies on real-time user interactions, so data proximity matters a lot,</li>
+<li>or handles highly sensitive data that can’t risk exposure.</li>
+</ul>
+<h2>Final tips</h2>
+<p>Successful on-premise deployment mainly depends on finding the right tools and setting up a suitable automated workflow. Popular cloud service platforms provide you with on-premise tools such as AWS Outposts and Azure Stack that let you run cloud-native applications on-premises.</p>
+<p>Adopting DevOps culture can also help you implement the right deployment strategy in both the cloud and on-premises, as it treats development, operations, and security as a single unit. In reality, there’s no such thing as "serverless". Whether you should manage your own datacenter or rely on a cloud platform depends on many parameters and can change with the environment as well.</p>
