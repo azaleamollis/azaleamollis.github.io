@@ -7,6 +7,7 @@
     --text-color-primary: #111;
     --text-color-secondary: #555;
     --text-color-tertiary: #777;
+    --text-color-medium: #ddd;
     --text-color-light: #fff;
     --text-color-warning: #dc3545;
     --bg-color: #fff4ee;
@@ -37,7 +38,9 @@ body {
 }
 .container {
     max-width: 45rem;
-    margin: 1.5rem auto 4rem;
+    margin: 1.5rem auto 0.5rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px var(--separator-color) solid;
 }
 p {
     padding: 0.625rem 0;
@@ -87,11 +90,12 @@ h3 {
 h4 {
     font-size: 1.25rem;
 }
-/* Images */
+/* Images, videos */
 figure {
     padding: 1.25rem 0;
 }
-.img-fluid {
+.img-fluid,
+.video-fluid {
     max-width: 100%;
     height: auto;
 }
@@ -262,18 +266,11 @@ button,
 input {
     overflow: visible;
 }
-button, 
-input, 
-optgroup, 
-select, 
-textarea {
-    margin: 0;
-}
 .form-control {
     display: block;
     width: 100%;
     line-height: 1.5;
-    color: #495057;
+    color: var(--text-color-primary);
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 .floating-label-form-group {
@@ -281,7 +278,7 @@ textarea {
     position: relative;
     margin-bottom: 0;
     padding-bottom: 0.5em;
-    border-bottom: 1px solid #dee2e6;
+    border-bottom: 1px solid var(--text-color-medium);
 }
 .floating-label-form-group label {
     font-size: 0.85em;
@@ -295,12 +292,11 @@ textarea {
     opacity: 0;
 }
 .floating-label-form-group .help-block {
-    /* margin: 15px 0; */
     padding: 0;
 }
-.text-danger {
+/*.text-danger {
     color: var(--text-color-warning) !important;
-  }
+}*/
 .floating-label-form-group input, 
 .floating-label-form-group textarea {
     font-size: 1.5em;
@@ -317,7 +313,7 @@ textarea {
 .floating-label-form-group input:focus, 
 .floating-label-form-group textarea:focus {
     border: none;
-    outline: none;
+    outline: 1px solid var(--text-color-medium);
 }
 /* Buttons */
 .submit-button {
@@ -339,8 +335,7 @@ footer {
     flex-shrink: 0;
     max-width: 65rem;
     margin: 0 auto;
-    padding: 2rem 3rem 0;
-    border-top: 1px var(--separator-color) solid;
+    padding: 2rem 2rem 0;
 }
 footer a,
 footer a:hover,
@@ -356,6 +351,7 @@ footer a:visited {
     align-items: center;
     gap: 2rem;
     list-style-type: none;
+    margin: 0;
 }
 .footer-content * {
     list-style-type: none;
@@ -364,6 +360,7 @@ footer a:visited {
     display: flex;
     gap: 1.25rem;
     font-size: 1.125rem;
+    margin: 0;
 }
 .footer-link,
 .footer-link:visited {
@@ -377,6 +374,7 @@ footer a:visited {
 .footer-info {
     text-align: center;
     max-width: 35rem;
+    margin: 0;
 }
 .footer-id {
     padding-bottom: 0.5rem;
@@ -385,4 +383,5 @@ footer a:visited {
 .copyright-notice {
     color: var(--text-color-tertiary);
     font-size: 0.875rem;
+    text-align: center;
 }
