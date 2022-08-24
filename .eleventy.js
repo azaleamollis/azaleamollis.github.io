@@ -6,6 +6,8 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("./src/assets/");
     eleventyConfig.addWatchTarget("./src/assets/");
 
+    eleventyConfig.setFrontMatterParsingOptions({  excerpt: true });
+
     eleventyConfig.addPlugin(syntaxHighlight);
     eleventyConfig.addPlugin(sitemap, {
         lastModifiedProperty: "lastupdate",

@@ -3,12 +3,11 @@ title:  "How to use a custom domain on GitHub Pages"
 subtitle: "DNS configuration of a GitHub-hosted Jekyll site"
 date: "2018-09-27"
 permalink: "/jekyll-dns-config-github-pages.html"
-excerpt: "If you have a custom domain, you can quickly set it up with your Jekyll site hosted on GitHub Pages. By default, GitHub Pages sites come with domains ending in github.io. To use your GitHub-hosted site with your custom domain, you only need to configure your DNS (Domain Name System) settings. Then, you can quickly check if your new domain properly works with the help of a DNS-testing service such as LeafDNS."
-ogimg: "og-github.jpg"
 redirect_from: /2018/09/27/jekyll-dns-config-github-pages.html
 ---
 <p>If you have a custom domain, you can quickly set it up with your <a href="https://jekyllrb.com/docs/github-pages/" target="_blank">Jekyll site hosted on GitHub Pages</a>. By default, GitHub Pages sites come with domains ending in <code>github.io</code>. To use your GitHub-hosted site with your custom domain, you only need to configure your DNS (Domain Name System) settings. Then, you can quickly check if your new domain properly works with the help of a DNS-testing service such as LeafDNS.</p>
-<p>The big thing about GitHub Pages is that GitHub lets you host your static website on its servers for free. Since May 2018, it even offers <a href="https://blog.github.com/2018-05-01-github-pages-custom-domains-https/" target="_blank">free HTTPS support for custom domains</a>.</p>
+<p>GitHub lets you host your static website on its servers for free. Since May 2018, it also offers <a href="https://blog.github.com/2018-05-01-github-pages-custom-domains-https/" target="_blank">free HTTPS support for custom domains</a>.</p>
+---
 <p>I will discuss the most typical use case when you want to point <i>both</i> the apex domain and the <code>www</code> subdomain to GitHub Pages. The apex domain is the (non-www) root domain without a subdomain, for instance, <code>annalytic.com</code> for me. There are other, more complicated use cases as well&mdash;<a href="https://help.github.com/articles/using-a-custom-domain-with-github-pages/" target="_blank">GitHub Docs</a> detail all of them comprehensively.</p>
 <p>There are two places where you need to configure your DNS settings:</p>
 <ol>
