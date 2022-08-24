@@ -10,5 +10,9 @@ layout: "base"
 </p>
 
 <div class="post-container single-post">
+    {% if ftimg %}
+    <figure><img class="img-fluid" src="{{ url }}/assets/img/posts/_featured/{{ ftimg }}" alt="{{ title }}" width="1200" height="630"></figure>
+    {% endif %} 
+
     {{ content }}
 </div>
