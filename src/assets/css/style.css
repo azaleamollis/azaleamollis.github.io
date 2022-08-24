@@ -77,6 +77,23 @@ ul {
 .list-negative li {
     padding-left: 0.5rem;
 }
+.document-list {
+    list-style-type: '\1F4C3';
+ }
+.document-list li {
+    padding-left: 0.5rem;
+    margin-left: 0.5rem;
+}
+/* Blockquotes */
+blockquote {
+    color: var(--text-color-tertiary);
+    font-style: oblique;
+    padding: 0 1rem;
+    margin: 1rem 0.625rem 2rem;
+}
+.bq-source {
+font-style: normal;
+}
 /* Headings */
 h1 {
     font-size: 2rem;
@@ -182,7 +199,7 @@ header {
 .post-subtitle {
     font-size: 1.25rem;
     font-weight: 400;
-    line-height: 1.25;
+    line-height: 1.4;
     margin-top: 0.5rem;
     color: var(--text-color-secondary);
 }
