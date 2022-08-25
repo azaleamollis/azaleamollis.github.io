@@ -3,15 +3,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% if ogimg %}
-        <meta name="twitter:card" content="summary">
-        <meta name="twitter:site" content="@annalyticlab">
-        <meta name="twitter:creator" content="@annalyticlab">
-        <meta name="twitter:image" content="https://www.annalytic.com/assets/img/social/{{ ogimg }}">
         <meta property="og:url" content="https://www.annalytic.com{{ permalink }}">
         <meta property="og:title" content="{{ title }}">
         <meta property="og:description" content="{{ subtitle }}">
         <meta property="og:image" content="https://www.annalytic.com/assets/img/social/{{ ogimg }}">
         <meta property="og:image:secure_url" content="https://www.annalytic.com/assets/img/social/{{ ogimg }}">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@annalyticlab">
+        <meta name="twitter:image" content="https://www.annalytic.com/assets/img/social/{{ ogimg }}">
     {% endif %}
     <title>{{ title }}</title>
     <link rel='icon' href="{{'/assets/img/site-elements/favicon.ico' | url }}" type='image/x-icon'>
