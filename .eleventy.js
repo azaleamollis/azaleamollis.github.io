@@ -1,4 +1,5 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const pluginRss = require("@11ty/eleventy-plugin-rss");
 const sitemap = require("@quasibit/eleventy-plugin-sitemap");
 
 module.exports = function(eleventyConfig) {
@@ -9,12 +10,13 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.setFrontMatterParsingOptions({  excerpt: true });
 
     eleventyConfig.addPlugin(syntaxHighlight);
+    eleventyConfig.addPlugin(pluginRss);
     eleventyConfig.addPlugin(sitemap, {
         lastModifiedProperty: "lastupdate",
 
         sitemap: {
           hostname: "https://www.annalytic.com",
-        },
+        }
       });
 
     return {
