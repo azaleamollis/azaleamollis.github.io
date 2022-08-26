@@ -378,6 +378,8 @@ footer a:visited {
 }
 .footer-list > ul {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1.25rem;
     font-size: 1.125rem;
     margin: 0;
