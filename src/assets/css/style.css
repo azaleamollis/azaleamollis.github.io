@@ -152,9 +152,9 @@ header {
 }
 .site-subtitle {
     color: var(--text-color-tertiary);
-    font-size: 1.125rem;
+    font-size: 1.25rem;
     font-weight: 400;
-    line-height: 1;
+    line-height: 1.25;
 }
 .top-menu {
     font-size: 1.25rem;
