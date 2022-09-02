@@ -1,0 +1,88 @@
+---
+title: "Network packet analysis – Part 1: Theory"
+subtitle: "A brief intro to TCP/IP layers, protocols, packets, and internet communication overall"
+permalink: "/network-packet-analysis-part1.html"
+date: "2022-09-01"
+ogimg: "og-network-packet-theory.jpg"
+---
+<p>Network packet analysis can help you understand the performance and security implications of a network or application. Packets are important because the internet is a packet-switched network &mdash; as opposed to circuit-switched networks such as voice telephone networks (see a comparison table of <a href="https://www.geeksforgeeks.org/difference-between-circuit-switching-and-packet-switching/">packet vs circuit switching</a> by GeeksforGeeks).</p> 
+
+<p>Information sent over the web is split into small data units (packets) where each packet includes all the information necessary for identification and routing, such as source and destination addresses and protocol identifiers.</p>
+
+<p>Thus, the internet is inherently a connectionless network, which means that:</p>
+---
+<ul>
+    <li>there's no established connection between the server and the client</li> 
+    <li>packets are independent of each other</li>
+    <li>every packet chooses the best route available for transmission (i.e. different packets can use different routes for delivery)</li>
+</ul>
+
+<h2>The composition of a network packet</h2>
+
+<p>Network packets have a layered structure where each layer:</p>
+
+<ul>
+    <li>is associated with a distinct stage of network communication</li>
+    <li>exchanges data between different hardware and software platforms belonging to that stage (e.g. routers, device drivers, network interface controllers, ports, web servers, browsers, etc.)</li>
+    <li>is implemented by different communication protocols</li>
+</ul>
+
+<section class="info-section">
+<h3 class="info-title">What are communication protocol layers?</h3>
+
+<p>The <a href="https://www.rfc-editor.org/info/rfc1122">TCP/IP model</a> (also known as the Internet Protocol Suite) specifies the standards of network communication over the internet. It consists of four layers &mdash; each communication protocol belongs to one layer. The layers are as follows:</p>
+<ol>
+    <li>LAYER 1 &ndash; <strong>Link (or network access) layer</strong> (protocols: Ethernet, PPP, etc.)</li>
+    <li>LAYER 2 &ndash; <strong>Internet layer</strong> (protocols: IP, IPsec, ARP, etc.)</li>
+    <li>LAYER 3 &ndash; <strong>Transport layer</strong> (protocols: UDP, TCP, QUIC, etc.)</li>
+    <li>LAYER 4 &ndash; <strong>Application layer</strong> (protocols: HTTP, DNS, TLS, etc.)</li>
+</ol>
+</section>
+
+<p>The data encapsulated in a packet belongs to three or four layers  &mdash; therefore, it's regulated by a set of protocols. The layers together represent a part or the whole of the TCP/IP model (e.g. an HTTP/1.1 packet also includes the TCP, IP, and Ethernet layers).</p>
+
+<p>In the diagram below, you can see the structure of a theoretical packet carrying application data &mdash; in real life, the top layer would belong to an application-layer protocol, such as HTTP, DNS, TLS, etc. It uses TCP as transport protocol and also includes the IP and physical (a.k.a. MAC or Ethernet) addresses of the destination machine:</p>
+
+<figure><img class="img-fluid img-center" src="/assets/img/posts/network-packet-analysis-part1/network-packet-example.jpg" alt="Network packet example, diagram" width="500" height="368"><figcaption>Image credit: W. Richard Stevens &ndash; TCP/IP Illustrated, Vol. 1: The Protocols (Addison-Wesley Professional Computing Series) &ndash; <a href="https://flylib.com/books/en/3.223.1.18/1/">1.6 Encapsulation</a></figcaption></figure>
+
+<p>Explanation of the above diagram from the cited book:</p>
+
+<blockquote>&quot;When an application sends data using TCP, the data is sent down the protocol stack, through each layer, until it is sent as a stream of bits across the network. Each layer adds information to the data by prepending headers (and sometimes adding trailer information) to the data that it receives. Figure 1.7 shows this process. The unit of data that TCP sends to IP is called a TCP segment. The unit of data that IP sends to the network interface is called an IP datagram. The stream of bits that flows across the Ethernet is called a frame.&quot;</blockquote>
+
+<p><em>Note that packets delivering high-level application data (i.e. HTML, CSS, JavaScript, image, and media files in binary format &mdash; either in part or the whole file, depending on the file size) are just one type of network packet. Many packets don't carry any application data, for instance, crypto packets are used for authentication such as TCP and TLS handshakes.</em></p>
+
+<h2>How do packets flow over the network?</h2>
+
+<p>To see how this all works in practice, let's see a simplified example of what happens on the wire when a web page loads in the browser (for the sake of simplicity, I didn't include the TLS protocol used for encryption in HTTPS requests &mdash; the below is the description of an insecure HTTP/1.1 request that doesn't encrypt the data but transmits it as plain text):</p>
+
+<ol>
+    <li>The user enters a URL into their browser's address bar.</li>
+    <li>The browser (client) sends a DNS lookup request to the user's ISP (Internet Service Provider) to resolve the domain name to a numeric IP address &mdash; see the <a href="https://www.whatismyip.com/dns-lookup#overview-of-the-forward-dns-lookup-process">process of a DNS lookup</a> in detail (DNS uses UDP for transport).</li>
+    <li>The ISP sends back the IP address of the requested domain to the user's browser.</li> 
+    <li>The browser establishes a TCP connection with the web server using the IP address &mdash; sends a TCP SYN (synchronize) packet for requesting authentication (first message in the <a href="https://developer.mozilla.org/en-US/docs/Glossary/TCP_handshake">three-way TCP handshake</a>).</li>
+    <li>The server responds with a SYN-ACK (synchronize-acknowledgement) packet &mdash; it authenticates itself and also requests authentication from the browser (second message in the TCP handshake).</li>
+    <li>The browser sends a TCP ACK packet (third message in the TCP handshake) together with the first HTTP request.</li>
+    <li>The TCP socket connection between the client and server is established (further messages can be sent without authentication).</li>
+    <li>The server responds with one or more HTTP packets  that deliver the HTML document for the requested page (in later round-trips, it sends the CSS and JavaScript files, images, etc.).</li> 
+</ol>
+
+<h2>Analyzing network packets</h2>
+
+<p>The best way to understand how network packets move around the network is to install a packet analyzer software that monitors the incoming and outgoing network traffic and captures and visualizes packets.</p>
+
+<p>In the second part of this post, you'll find a brief intro to <a href="https://www.wireshark.org/">Wireshark</a>, a popular network sniffer, and examples of packet captures of the most frequently used protocols &mdash; i.e. UDP, TCP, QUIC, TLS, HTTP, and DNS.</p>
+
+<h2>Learn more</h2>
+
+<p>To understand the theoretical background of network packet analysis and communication protocols better, check out one or all of the resources below.</p>
+
+<h3>Recommended books</h3>
+<ul class="book-list">
+    <li>W. Richard Stevens: TCP/IP Illustrated, Vol. 1: The Protocols (Addison-Wesley Professional Computing Series) &ndash; see the <a href="https://en.wikipedia.org/wiki/TCP/IP_Illustrated">related Wikipedia article</a> or have a look at the <a href="https://flylib.com/books/en/3.223.1/">first edition at Flylib</a> or the <a href="https://www.oreilly.com/library/view/tcpip-illustrated-volume/9780132808200/">second edition at O'Reilly Learning</a> (the first edition is available on Amazon, too)</li>
+    <li>Ilya Grigorik: High Performance Browser Networking &ndash; read the ebook at <a href="https://hpbn.co/">hpbn.co</a></li>
+</ul>
+
+<h3>From this blog</h3>
+<ul class="internal-post-list">
+    <li><a href="https://www.annalytic.com/rfc-collection-http3-quic.html">The most important RFCs to understand HTTP/3 and QUIC</a> &ndash; a non-comprehensive collection of specifications related to HTTP and the underlying security and transport-layer protocols</li>
+</ul>
