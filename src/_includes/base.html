@@ -20,5 +20,11 @@
     {% include "footer.html" %}
     
     <script src="{{ '/assets/js/main.min.js' | url }}"></script>
+
+    {% if layout == "post" %}
+        <script src="{{ '/assets/js/vendor/simple-lightbox/simple-lightbox.min.js' | url }}"></script>
+        <script>(function() { var $lightbox = new SimpleLightbox('.lightbox a', {'closeText': 'x', 'maxZoom': '1', 'overlayOpacity': 0.75, 'captionPosition': 'outside', 'heightRatio': 0.8});})();</script>
+    {% endif %}
+    
 </body>
 </html>
