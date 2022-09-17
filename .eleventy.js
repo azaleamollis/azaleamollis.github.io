@@ -6,6 +6,11 @@ module.exports = function(eleventyConfig) {
     
     eleventyConfig.addPassthroughCopy("./src/assets/");
     eleventyConfig.addWatchTarget("./src/assets/");
+    
+    eleventyConfig.addPassthroughCopy({
+      "./node_modules/simplelightbox/dist/simple-lightbox.min.css": "./assets/css/vendor/simple-lightbox/simple-lightbox.min.css",
+      "./node_modules/simplelightbox/dist/simple-lightbox.min.js": "./assets/js/vendor/simple-lightbox/simple-lightbox.min.js"
+    });
 
     eleventyConfig.setFrontMatterParsingOptions({  excerpt: true });
 
