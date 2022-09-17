@@ -137,9 +137,13 @@ figcaption {
     margin: 0.5rem 0;
  }
 .img-fluid,
-.video-fluid {
+.video-fluid,
+.lightbox {
     max-width: 100%;
     height: auto;
+}
+.video-fluid {
+    margin: 1.25rem 0;
 }
 .img-center {
     display: block;
@@ -449,5 +453,23 @@ footer a:visited {
 .copyright-notice {
     color: var(--text-color-tertiary);
     font-size: 0.875rem;
+    text-align: center;
+}
+/* Overrides - Simple Lightbox */
+.sl-overlay {
+    background: var(--text-color-primary) !important;
+}
+.sl-navigation,
+.sl-counter,
+.sl-next,
+.sl-prev, 
+.sl-close {
+    color: var(--text-color-light) !important;
+}
+.sl-caption {
+    background: var(--text-color-medium) !important;
+    color: var(--text-color-primary) !important;
+    font-size: 0.875rem !important;
+    font-style: italic;
     text-align: center;
 }
