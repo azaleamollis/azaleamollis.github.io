@@ -1,0 +1,193 @@
+---
+title: "Network packet analysis – Part II: Practice"
+subtitle: "Capturing network traffic with Wireshark (with examples of HTTP, QUIC, TCP, TLS, and other packet captures)"
+permalink: "/network-packet-analysis-part2.html"
+date: "2022-09-20"
+ogimg: "og-network-packet-practice.jpg"
+---
+<p><a href="https://www.wireshark.org/">Wireshark</a> is a cross-platform network capture and analysis tool that gives you insight into your network traffic, including a detailed breakdown of each data packet. It can be used for improving network and application performance, detecting security threats, troubleshooting networking issues, and more.</p>
+
+<p>Unlike other network analysis tools, such as <a href="https://www.tcpdump.org/">tcpdump</a>, Wireshark has a graphical user interface that allows you to inspect network packets visually, without the use of a command line interface. This post looks into how packet capturing with Wireshark works in practice.</p>
+---
+<p><em>If you are interested in the brief theory of network packet analysis, check out the <a href="/network-packet-analysis-part1.html" target="_blank">first part of this article</a>, too, which discusses TCP/IP layers, protocols, packets, and internet communication overall.</em></p>
+
+<h2 id="what-are-wireshark-frames">What are Wireshark frames?</h2>
+
+<p>Packets in Wireshark are called frames. A <a href="https://wiki.wireshark.org/Protocols/frame">frame</a> is a pseudo-protocol developed by Wireshark that you can see at the top of each Wireshark capture &mdash; it's essentially the summary of all the underlying data managed by a <a href="/network-packet-analysis-part1.html#composition-of-network-packet">set of communication protocols</a> (e.g. total byte size, arrival time, frame number, etc.).</p>
+
+<p>Network packets, overall, are not static entities. A Wireshark capture is the snapshot of <em>one</em> moment &mdash; when Wireshark recognizes the presence of the packet. However, the packet is built up gradually, and each protocol involved in the process adds data to it.</p>
+
+<h2 id="start-capturing">Start capturing</h2>
+
+<p>Wireshark can capture packets both exchanged with external servers via the internet and used within a local network.</p>
+
+<p>Before getting started with packet capturing, you need to decide which of your network connections you want to capture. Wireshark lets you choose from wired, wireless, and Bluetooth connections:</p>
+
+<figure class="lightbox">
+    <a class="sl-fixed" href="/assets/img/posts/network-packet-analysis-part2/wireshark-choose-connection.jpg">
+        <img class="img-fluid" src="/assets/img/posts/network-packet-analysis-part2/wireshark-choose-connection.jpg" alt="Choose a network connection in Wireshark" title="Wireshark &ndash; Welcome screen">
+    </a>
+    <figcaption>Wireshark &ndash; Welcome screen</figcaption>
+</figure>
+
+<h2 id="the-look-of-a-wireshark-packet">What does a Wireshark packet look like?</h2>
+
+<p>Each network packet has a layered structure defined by the <a href="https://www.rfc-editor.org/rfc/rfc1122.html#page-9">Internet Protocol Suite</a>. A Wireshark capture is named after its top-level protocol, which can belong to the application (HTTP, TLS, DNS, etc.), transport (UDP, TCP, QUIC), or link layer (e.g. ARP) &mdash; for example, you can have HTTP, QUIC, DNS, TCP, and other captures.</p>
+
+<h3 id="example-1">Example 1: UDP + DNS</h3>
+
+<p>Here's a screenshot of the overall look of the Wireshark UI and the breakdown of a DNS (Domain Name Server) query &mdash; the DNS conversation (request: Frame 10 and response: Frame 11) is colored in red:</p>
+
+<figure class="lightbox">
+    <a class="sl-fixed" href="/assets/img/posts/network-packet-analysis-part2/wireshark-dns-capture-example.png">
+        <img class="img-fluid" src="/assets/img/posts/network-packet-analysis-part2/wireshark-dns-capture-example.png" alt="DNS capture example" title="DNS query example (Frame 10: Ethernet, IPv4, UDP, DNS)">
+    </a>
+    <figcaption>DNS query example (Frame 10: Ethernet, IPv4, UDP, DNS)</figcaption>
+</figure>
+
+<p>In the top pane (<a href="https://www.wireshark.org/docs/wsug_html_chunked/ChUsePacketListPaneSection.html">Packet List</a>), you can see the packets captured by Wireshark, the middle pane (<a href="https://www.wireshark.org/docs/wsug_html_chunked/ChUsePacketDetailsPaneSection.html">Packet Details</a>) shows the used protocol stack (Ethernet, IPv4, UDP, DNS), and the bottom pane (<a href="https://www.wireshark.org/docs/wsug_html_chunked/ChUsePacketBytesPaneSection.html">Packet Bytes</a>) shows the canonical hex dump of the packet data.</p>
+
+<p>The data encapsulated in the packet is added by four communication protocols &mdash; each belonging to a different TCP/IP layer.</p>
+
+<p>For example, Frame 10 weighs 81 bytes in total, of which:</p>
+
+<ul>
+    <li>14 bytes are link-layer data added by the Ethernet protocol</li>
+    <li>20 bytes are internet-layer data added by IPv4</li>
+    <li>8 bytes are transport-layer data added by UDP</li>
+    <li>39 bytes are application-layer data added by the DNS protocol</li>
+</ul>
+
+<p>Wireshark is showing the number of bytes added by each protocol in the bottom-left corner of the UI as you're clicking through the protocols in the Packet Details pane.</p>
+
+<h2 id="other-examples-of-wireshark-captures">Other examples of Wireshark captures</h2>
+
+<p>Now, let's see some other examples of Wireshark captures of different protocol stacks, too.</p>
+
+<p>As we're on an Ethernet connection, the link layer always uses the Ethernet protocol, and the internet layer is always handled by IPv4 on this connection.</p> 
+
+<p>The transport layer is either TCP or UDP &mdash; these are the two transport protocols that all operating systems and devices support. QUIC, which is a new transport protocol, runs on top of UDP and extends it with additional features &mdash; it can be thought of as a high-level transport protocol that includes performance and security features.</p>
+
+<p>Application-layer data is delivered to the destination by either TCP or UDP &mdash; e.g. HTTP/1.1, HTTP/2, and TLS use TCP, while QUIC, DNS, and HTTP/3 use UDP for transport.</p>
+
+<h3 id="example-2">Example 2: TCP three-way handshake + unencrypted HTTP/1.1 request</h3>
+
+<p>HTTP/1.1 uses TCP (Transmission Control Protocol) as transport protocol. The communication starts with TCP's <a href="https://www.geeksforgeeks.org/tcp-3-way-handshake-process/"three-way> (SYN, SYN-ACK, ACK) handshake</a> that establishes the connection between the client and server. The client sends the first HTTP request (Frame 240) to the server immediately after the ACK packet (Frame 239).</p>
+
+<p><em>On the screenshots below:</em></p> 
+<ul style="list-style-type: none;">
+    <li><em>Red border = packets sent by the client</em></li>
+    <li><em>Blue border = packets sent by the server</em></li>
+</ul>
+
+<figure class="lightbox">
+    <a class="sl-fixed" href="/assets/img/posts/network-packet-analysis-part2/wireshark-tcp-http-unencrypted.png">
+        <img class="img-fluid" src="/assets/img/posts/network-packet-analysis-part2/wireshark-tcp-http-unencrypted.png" alt="TCP and HTTP/1.1" title="TCP three-way handshake and an unencrypted HTTP/1.1 GET request">
+    </a>
+    <figcaption>TCP three-way handshake and an unencrypted HTTP/1.1 GET request</figcaption>
+</figure>
+
+<h3 id="example-3">Example 3: TLS v1.2 handshake + secured HTTPS application data</h3>
+
+<p>The TLS (Transport Layer Security) protocol is an application-layer security protocol used for encrypting data sent by other application-layer protocols such as HTTP, SMTP, and FTP.</p> 
+
+<p>When it encrypts HTTPS data (can be HTTP/1.1 or HTTP/2), it uses the <a href="https://www.ssl2buy.com/wiki/port-80-http-vs-port-443-https">TCP 443 port</a> for the transfer. So, when you see a TLS packet in Wireshark that connects to the server's TCP 443 port, it hides either HTTP/1.1 or HTTP/2 data that you can't see by default &mdash; to read the encrypted data you need to <a href="https://wiki.wireshark.org/TLS#tls-decryption">decrypt the TLS packet</a> (for which, you'll need the appropriate session keys).</p>
+
+<p>TLS currently has two versions in use: TLS v1.2 and TLS v1.3 &mdash; the newer version coming with significant performance and security improvements.</p> 
+
+<p>First, let's see what the TLS v1.2 handshake looks like in Wireshark.</p>
+
+<p>The TLS handshake starts immediately after the TCP handshake successfully finishes and the <a href="https://www.howtouselinux.com/post/tcp-socket">TCP socket</a> between the client and the server is opened. The <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/">authentication process</a> takes two full round-trips (one trip can include more than one frame &mdash; see <a href="https://www.wireshark.org/docs/wsug_html_chunked/ChAdvReassemblySection.html">how packet reassembly works in Wireshark</a>).</p> 
+
+<p>The client can send the first application-layer HTTP request (Frame 6113) only after the third round-trip (one for the TCP handshake, two for the TLS v1.2 handshake).</p>
+
+<p>See the <a href="https://thesecmaster.com/decoding-tls-v1-2-protocol-handshake-with-wireshark/">detailed breakdown of the TLS v1.2 handshake</a> on TheSecMaster.</p>
+
+<figure class="lightbox">
+    <a class="sl-fixed" href="/assets/img/posts/network-packet-analysis-part2/wireshark-tls-v12-handshake.png">
+        <img class="img-fluid" src="/assets/img/posts/network-packet-analysis-part2/wireshark-tls-v12-handshake.png" alt="TLS v1.2 handshake" title="TLS v1.2 handshake and an encrypted HTTPS request">
+    </a>
+    <figcaption>TLS v1.2 handshake and an encrypted HTTPS request</figcaption>
+</figure>
+
+<h3 id="example-4">Example 4: TLS v1.3 handshake + secured HTTPS application data</h3>
+
+<p>In TLS v1.3, the TLS handshake requires fewer messages between the client and server &mdash; it only takes one round-trip.</p> 
+
+<p>As you can see below, the client immediately sends the first HTTP request (Frame 340) once the 'Server Hello' message and the cipher spec and other server data arrive and the server starts encrypting the data (Frame 339).</p/> 
+
+<p>See the <a href="https://thesecmaster.com/decoding-tls-1-3-protocol-handshake-with-wireshark/">detailed breakdown of the TLS v1.3 handshake</a> on TheSecMaster.</p>
+
+<figure class="lightbox">
+    <a class="sl-fixed" href="/assets/img/posts/network-packet-analysis-part2/wireshark-tls-v13-handshake.png">
+        <img class="img-fluid" src="/assets/img/posts/network-packet-analysis-part2/wireshark-tls-v13-handshake.png" alt="TLS v1.3 handshake" title="TLS v1.3 handshake and an encrypted HTTPS request">
+    </a>
+    <figcaption>TLS v1.3 handshake and an encrypted HTTPS request</figcaption>
+</figure>
+
+<h3 id="example-5">Example 5: TLS v1.3 handshake with 0-RTT resumption</h3>
+
+<p>TLS v1.3 also has a <a href="https://ldapwiki.com/wiki/0-RTT%20Handshakes">0-RTT</a> (Zero Round-Trip Time or 'early data') feature that allows the client to send an HTTP request on the first flight on connections it has previously established with the server.</p>
+
+<figure class="lightbox">
+    <a class="sl-fixed" href="/assets/img/posts/network-packet-analysis-part2/wireshark-tls-v13-handshake-0rtt.png">
+        <img class="img-fluid" src="/assets/img/posts/network-packet-analysis-part2/wireshark-tls-v13-handshake-0rtt.png" alt="TLS v1.3 handshake with 0-RTT" title="TLS v1.3 handshake with 0-RTT connection setup">
+    </a>
+    <figcaption>TLS v1.3 handshake with 0-RTT connection setup</figcaption>
+</figure>
+
+<h3 id="example-6">Example 6: UDP + QUIC with 0-RTT + HTTP/3 data</h3>
+
+<p>QUIC is a new-ish communication protocol (standardized in 2021, but it's already widely used) that runs on top of UDP and serves as the transport-layer protocol for HTTP/3 (+ some new application-layer protocols also use QUIC).</p> 
+
+<p>As QUIC includes the TLS v1.3 security protocol, it can be used to set up a fully encrypted 0-RTT connection between the client and server (QUIC encrypts more data than TLS v1.3).</p> 
+
+<p>Data sent with QUIC is always encrypted. If it uses the server's UDP 443 port for the connection and you see the 'Protected Payload' info in Wireshark, then it hides HTTP/3 application data &mdash; to read its contents, you need to decrypt the packet in Wireshark using the belonging cryptographic session keys.</p>
+
+<figure class="lightbox">
+    <a class="sl-fixed" href="/assets/img/posts/network-packet-analysis-part2/wireshark-udp-quic-0rtt-http3.png">
+        <img class="img-fluid" src="/assets/img/posts/network-packet-analysis-part2/wireshark-udp-quic-0rtt-http3.png" alt="QUIC with 0-RTT" title="A QUIC stream with 0-RTT connection setup">
+    </a>
+    <figcaption>A QUIC stream with 0-RTT connection setup</figcaption>
+</figure>
+
+<h2 id="conclusion-and-resources">Conclusion &amp; resources</h2>
+
+<p>This two-part article was a very brief intro to the theory and practice of network packet analysis and communication protocols.</p> 
+
+<p>It discussed:</p>
+
+<ul class="list-positive" style="margin-left: 1.5rem;">
+    <li>the composition of a network packet in theory</li>
+    <li>the TCP/IP model and its four layers</li>
+    <li>the step-by-step process of how an HTTP request takes place on the network</li>
+    <li>the detailed breakdown of a Wireshark capture</li>
+    <li>examples of UDP-DNS, TCP-HTTP/1.1, TCP-TLSv1.2-HTTPS, TCP-TLSv1.3-HTTPS (with and without 0-RTT), and UDP-QUIC-HTTP/3 packet captures</li>
+</ul>
+
+<p>To learn more about the subject, here are some useful resources too:</p>
+
+<h3>Wireshark filters</h3>
+
+<ul class="document-list">
+    <li><a href="https://networkproguide.com/epic-list-top-searched-wireshark-display-filters/">Epic List of Top Searched Wireshark Display Filters</a> by Chase Smith on NetworkProGuide</li>
+    <li><a href="https://www.networkdatapedia.com/post/2019/01/29/top-10-wireshark-filters">Top 10 Wireshark Filters</a> by Chris Greer on NetworkDataPedia</li>
+</ul>
+
+<h3>Recommended videos</h3>
+
+<ul class="video-list">
+    <li><a href="https://www.youtube.com/watch?v=5qecyZHL-GU">How to decrypt HTTPS traffic with Wireshark</a> on Chris Greer's YouTube channel</li>
+</ul>
+
+<h3>Recommended articles</h3>
+
+<ul class="document-list">
+    <li><a href="https://www.a10networks.com/glossary/key-differences-between-tls-1-2-and-tls-1-3/">Key differences between TLS 1.2 and TLS 1.3</a> in A10 Network's Glossary of Terms</li>
+</ul>
+
+<h3>On this blog</h3>
+<ul class="internal-post-list">
+    <li><a href="/network-packet-analysis-part1.html">Network packet analysis &ndash; Part I: Theory</a> &ndash; A brief intro to TCP/IP layers, protocols, packets, and internet communication overall</li>
+    <li><a href="/rfc-collection-http3-quic.html">The most important RFCs to understand HTTP/3 and QUIC</a> &ndash; A non-comprehensive collection of specifications related to HTTP and the underlying security and transport-layer protocols</li>
+</ul>

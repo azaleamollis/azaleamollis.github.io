@@ -18,7 +18,7 @@ ogimg: "og-network-packet-theory.jpg"
     <li>every packet chooses the best route available for transmission (i.e. different packets can use different routes for delivery)</li>
 </ul>
 
-<h2>The composition of a network packet</h2>
+<h2 id="composition-of-network-packet">The composition of a network packet</h2>
 
 <p>Network packets have a layered structure where each layer:</p>
 
@@ -52,7 +52,7 @@ ogimg: "og-network-packet-theory.jpg"
 
 <p><em>Note that packets delivering high-level application data (i.e. HTML, CSS, JavaScript, image, and media files in binary format &mdash; either in part or the whole file, depending on the file size) are just one type of network packet. Many packets don't carry any application data, for instance, crypto packets are used for authentication such as TCP and TLS handshakes.</em></p>
 
-<h2>How do packets flow over the network?</h2>
+<h2 id="packets-flow-over-network">How do packets flow over the network?</h2>
 
 <p>To see how this all works in practice, let's see a simplified example of what happens on the wire when a web page loads in the browser (for the sake of simplicity, I didn't include the TLS protocol used for encryption in HTTPS requests &mdash; the below is the description of an insecure HTTP/1.1 request that doesn't encrypt the data but transmits it as plain text):</p>
 
@@ -67,13 +67,13 @@ ogimg: "og-network-packet-theory.jpg"
     <li>The server responds with one or more HTTP packets  that deliver the HTML document for the requested page (in later round-trips, it sends the CSS and JavaScript files, images, etc.).</li> 
 </ol>
 
-<h2>Analyzing network packets</h2>
+<h2 id="analyzing-network-packets">Analyzing network packets</h2>
 
 <p>The best way to understand how network packets move around the network is to install a packet analyzer application on your own computer that monitors the incoming and outgoing network traffic, captures packets, and visualizes them.</p>
 
 <p>In the second part of this post, you'll find a brief intro to <a href="https://www.wireshark.org/">Wireshark</a>, a popular network sniffer, and examples of packet captures of the most frequently used protocols &mdash; i.e. UDP, TCP, QUIC, TLS, HTTP, and DNS.</p>
 
-<h2>Learn more</h2>
+<h2 id="resources">Resources</h2>
 
 <p>To understand the theoretical background of network packet analysis and communication protocols better, check out one or all of the resources below.</p>
 
@@ -83,7 +83,8 @@ ogimg: "og-network-packet-theory.jpg"
     <li>Ilya Grigorik: High Performance Browser Networking &ndash; read the ebook at <a href="https://hpbn.co/">hpbn.co</a></li>
 </ul>
 
-<h3>From this blog</h3>
+<h3>On this blog</h3>
 <ul class="internal-post-list">
-    <li><a href="/rfc-collection-http3-quic.html">The most important RFCs to understand HTTP/3 and QUIC</a> &ndash; a non-comprehensive collection of specifications related to HTTP and the underlying security and transport-layer protocols</li>
+    <li><a href="/network-packet-analysis-part2.html">Network packet analysis – Part II: Practice</a> &ndash; Capturing network traffic with Wireshark (with examples of HTTP, QUIC, TCP, UDP, and other packet captures)</li>
+    <li><a href="/rfc-collection-http3-quic.html">The most important RFCs to understand HTTP/3 and QUIC</a> &ndash; A non-comprehensive collection of specifications related to HTTP and the underlying security and transport-layer protocols</li>
 </ul>
