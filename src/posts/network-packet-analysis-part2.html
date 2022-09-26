@@ -3,6 +3,7 @@ title: "Network packet analysis – Part II: Practice"
 subtitle: "Capturing network traffic with Wireshark (with examples of HTTP, QUIC, TCP, TLS, and other packet captures)"
 permalink: "/network-packet-analysis-part2.html"
 date: "2022-09-20"
+lastupdate: "2022-09-26"
 ogimg: "og-network-packet-practice.jpg"
 ---
 <p><a href="https://www.wireshark.org/">Wireshark</a> is a cross-platform network capture and analysis tool that gives you insight into your network traffic, including a detailed breakdown of each data packet. It can be used for improving network and application performance, detecting security threats, troubleshooting networking issues, and more.</p>
@@ -136,7 +137,7 @@ ogimg: "og-network-packet-practice.jpg"
     <figcaption>TLS v1.3 handshake with 0-RTT connection setup</figcaption>
 </figure>
 
-<h3 id="example-6">Example 6: UDP + QUIC with 0-RTT + HTTP/3 data</h3>
+<h3 id="example-6a">Example 6: UDP + QUIC with 0-RTT + HTTP/3 data</h3>
 
 <p>QUIC is a new-ish communication protocol (standardized in 2021, but it's already widely used) that runs on top of UDP and serves as the transport-layer protocol for HTTP/3 (+ some new application-layer protocols also use QUIC).</p> 
 
@@ -149,6 +150,17 @@ ogimg: "og-network-packet-practice.jpg"
         <img class="img-fluid" src="/assets/img/posts/network-packet-analysis-part2/wireshark-udp-quic-0rtt-http3.png" alt="QUIC with 0-RTT" title="A QUIC stream with 0-RTT connection setup">
     </a>
     <figcaption>A QUIC stream with 0-RTT connection setup</figcaption>
+</figure>
+
+<p id="example-6b">Here are the details of the UDP header belonging to Frame 126 above. As you can see, the header is just 8 bytes: 2 bytes for the source port data in hex dump format (d8 e1), 2 bytes for the destination port (01 bb), 2 bytes for the length (05 55), and 2 bytes for the checksum (f4 39).</p> 
+
+<p>It transports a protected QUIC payload of 1357 bytes in total, split into three parts. This is because it's the first frame in the stream that includes different types of data &mdash; you can see the details if you expand each part in the Packet Details pane. However, most frames transport the QUIC payload in one part.</p>
+
+<figure class="lightbox">
+    <a class="sl-fixed" href="/assets/img/posts/network-packet-analysis-part2/wireshark-udp-expanded.png">
+        <img class="img-fluid" src="/assets/img/posts/network-packet-analysis-part2/wireshark-udp-expanded.png" alt="UDP details" title="Details of the UDP header belonging to the previous QUIC stream">
+    </a>
+    <figcaption>Details of the UDP header belonging to the previous QUIC stream</figcaption>
 </figure>
 
 <h2 id="conclusion-and-resources">Conclusion &amp; resources</h2>
