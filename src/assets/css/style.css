@@ -6,8 +6,8 @@
     --theme-color-subtle: #fedcfb;
     --theme-color-accent: #035962;
     --text-color-primary: #111;
-    --text-color-secondary: #555;
-    --text-color-tertiary: #777;
+    --text-color-secondary: #444;
+    --text-color-tertiary: #666;
     --text-color-medium: #ddd;
     --text-color-light: #fff;
     --text-color-warning: #dc3545;
@@ -94,6 +94,26 @@ ul {
 .external-post-list {
     list-style-type: '\1F4F0';
 }
+.check-mark-list {
+    list-style-type: '\2714 \FE0F \00A0';
+    margin-left: 2rem;
+}
+.pencil-list {
+    list-style-type: '\1F4DD \00A0';
+    margin-left: 2rem;
+}
+.pen-list {
+    list-style-type: '\01F58B \FE0F \00A0';
+    margin-left: 2rem;
+}
+.brain-list {
+    list-style-type: '\01F9E0 \00A0';
+    margin-left: 2rem;
+}
+.chat-list {
+    list-style-type: '\1F4AC \00A0';
+    margin-left: 2rem;
+}
 .document-list li,
 .book-list li,
 .video-list li,
@@ -102,6 +122,14 @@ ul {
     padding-left: 0.5rem;
     margin-left: 0.5rem;
 }
+/* Heading Prefixes */
+.prefix-clipboard:before {
+    content: '\01F4CB \00A0';
+}
+.prefix-brain:before {
+    content: '\01F9E0 \00A0';
+}
+
 /* Blockquotes */
 blockquote {
     color: var(--text-color-tertiary);
@@ -398,6 +426,35 @@ input {
 .submit-button:focus {
     background-color: var(--theme-color-secondary);
 }
+/* Pages */
+.page-title {
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 2rem 0 1.5rem;
+}
+.page-subtitle {
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 2rem 0 1.5rem;
+    color: var(--text-color-secondary);
+}
+.page-sub-subtitle {
+    font-size: 1.75rem;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 2rem 0 1.5rem;
+    color: var(--text-color-tertiary);
+}
+.page-sub-sub-subtitle {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 2rem 0 1.5rem;
+    color: var(--text-color-primary);
+}
+    
 /* Footer */
 footer {
     flex-shrink: 0;
