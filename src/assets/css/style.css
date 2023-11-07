@@ -5,6 +5,7 @@
     --theme-color-tertiary: #620359;
     --theme-color-subtle: #fedcfb;
     --theme-color-accent: #035962;
+    --theme-color-accent-alt: #0590c1;
     --text-color-primary: #111;
     --text-color-secondary: #444;
     --text-color-tertiary: #666;
@@ -68,16 +69,12 @@ ul {
     margin: 0.625rem 0 0.625rem 1.125rem;
 }
 .list-positive {
-    list-style-type: "\2705";
-    margin-left: 0.9375rem;
+    list-style-type: "\2705 \00A0";
+    margin-left: 2rem;
 }
 .list-negative {
-    list-style-type: "\274C";
-    margin-left: 0.875rem;
-}
-.list-positive li,
-.list-negative li {
-    padding-left: 0.5rem;
+    list-style-type: "\274C \00A0";
+    margin-left: 2rem;
 }
 .document-list {
     list-style-type: '\1F4C3';
@@ -426,22 +423,32 @@ input {
 .submit-button:focus {
     background-color: var(--theme-color-secondary);
 }
+.cta-button {
+    display: inline-block;
+    background-color: var(--theme-color-accent-alt);
+    color: var(--text-color-light) !important;
+    font-size: 1rem;
+    margin: 0.75rem 0;
+    padding: 0.85rem 2rem;
+    border: 1px solid var(--text-color-accent);
+    cursor: pointer;
+}
 /* Pages */
 .page-title {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 600;
     line-height: 1.4;
     margin: 2rem 0 1.5rem;
 }
 .page-subtitle {
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     font-weight: 400;
     line-height: 1.4;
     margin: 2rem 0 1.5rem;
     color: var(--text-color-secondary);
 }
 .page-sub-subtitle {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 400;
     line-height: 1.4;
     margin: 2rem 0 1.5rem;

@@ -5,8 +5,8 @@ eleventyExcludeFromCollections: "true"
 ---
 <div class="contact-info">
   <p>In the contact form below, you can get in touch with me related to the following subjects:</p> 
-  <ul class="contact-list list-positive">
-    <li>Asking for a quote related to my writing, editing, and consultancy services</li>
+  <ul class="check-mark-list">
+    <li>Asking for a quote related to my <a class="contact-link" href="info.html">content services</a></li>
     <li>Requesting permission for using my content published here or elsewhere</li>
     <li>Addressing copyright issues</li>
     <li>Sending (meaningful) feedback about the blog posts published on this website</li>
@@ -15,7 +15,7 @@ eleventyExcludeFromCollections: "true"
 
 <div class="contact-info">
   <p>Please note that I won't respond to the following types of inquiries:</p>
-  <ul class="contact-list list-negative">
+  <ul class="list-negative">
     <li>Offering your SEO services</li>
     <li>Writing/working for exposure or free (including consultancy work and link placements)</li>
     <li>Issues with my articles published elsewhere (please contact the respective publication)</li>
@@ -23,7 +23,7 @@ eleventyExcludeFromCollections: "true"
   </ul>
 </div>
 
-<h2 class="contact-form">Send Your Message</h2>
+<h2 class="contact-form page-subtitle">Send Your Message</h2>
 <script type="text/javascript">var submitted=false;</script>
 <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"     
 onload="if(submitted) {window.location='thankyou.html';}"></iframe>
@@ -60,6 +60,6 @@ onsubmit="submitted=true;">
   <br>
   <div id="success"></div>
   <div class="form-group">
-    <button type="submit" class="submit-button" id="sendMessageButton">Send &raquo;</button>
+    <button type="submit" class="cta-button" id="sendMessageButton">Send message &raquo;</button>
   </div>
 </form>
