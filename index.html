@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annalytic | Annalytic.com</title>
+    
+    <link rel='icon' href="/assets/img/site-elements/favicon.ico" type='image/x-icon'>
+    <link rel="stylesheet" href="/assets/css/style.min.css">
+    
+</head>
+
+<body>
+
+    <div class="main-content">
+
+        <header>
+    <div class="site-id">
+        <h1 class="site-title"><a href="/">Annalytic.com</a></h1>
+        <h2 class="site-subtitle">Anna Monus | Technical Writing &amp; Editing</h2> 
+    </div>
+    <nav class="top-menu">
+        <ul class="top-menu-list">
+            <li class="top-menu-item"><a href="/">Blog</a></li>
+            <li class="top-menu-item"><a href="/articles.html">Articles</a></li>
+            <li class="top-menu-item"><a href="/contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+        <div class="container">
+            <article>
+                <div class="blog-container">
+    <ul class="post-list">
+    
+        <li class="post-list-item">
+            <h2 class="post-title"><a class="post-title-link" href="/network-packet-analysis-part2.html">Network packet analysis – Part II: Practice</a></h2>
+            <h3 class="post-subtitle">Capturing network traffic with Wireshark (with examples of HTTP, QUIC, TCP, TLS, and other packet captures)</h3>
+            <p class="post-date">Published on Sep 20, 2022&nbsp;(Last updated on Sep 26, 2022)</p>
+            <p><a href="https://www.wireshark.org/">Wireshark</a> is a cross-platform network capture and analysis tool that gives you insight into your network traffic, including a detailed breakdown of each data packet. It can be used for improving network and application performance, detecting security threats, troubleshooting networking issues, and more.</p>
+
+<p>Unlike other network analysis tools, such as <a href="https://www.tcpdump.org/">tcpdump</a>, Wireshark has a graphical user interface that allows you to inspect network packets visually, without the use of a command line interface. This post looks into how packet capturing with Wireshark works in practice.</p>
+
+            <p><a class="read-more-link" href="/network-packet-analysis-part2.html">Read more &raquo;</a></p>
+        </li>
+    
+        <li class="post-list-item">
+            <h2 class="post-title"><a class="post-title-link" href="/network-packet-analysis-part1.html">Network packet analysis – Part I: Theory</a></h2>
+            <h3 class="post-subtitle">A brief intro to TCP/IP layers, protocols, packets, and internet communication overall</h3>
+            <p class="post-date">Published on Sep 01, 2022&nbsp;(Last updated on Sep 17, 2022)</p>
+            <p>Network packet analysis can help you understand the performance and security implications of a network or application. Packets are important because the internet is a packet-switched network &mdash; as opposed to circuit-switched networks such as voice telephone networks (see a comparison table of <a href="https://www.geeksforgeeks.org/difference-between-circuit-switching-and-packet-switching/">packet vs circuit switching</a> by GeeksforGeeks).</p> 
+
+<p>Information sent over the web is split into small data units (packets) where each packet includes all the information necessary for identification and routing, such as source and destination addresses and protocol identifiers.</p>
+
+<p>Thus, the internet is inherently a connectionless network, which means that:</p>
+
+            <p><a class="read-more-link" href="/network-packet-analysis-part1.html">Read more &raquo;</a></p>
+        </li>
+    
+        <li class="post-list-item">
+            <h2 class="post-title"><a class="post-title-link" href="/rfc-collection-http3-quic.html">The most important RFCs to understand HTTP/3 and QUIC</a></h2>
+            <h3 class="post-subtitle">A non-comprehensive collection of specifications related to HTTP and the underlying security and transport-layer protocols</h3>
+            <p class="post-date">Published on Aug 24, 2022&nbsp;(Last updated on Sep 01, 2022)</p>
+            <p>The <a href="https://www.rfc-editor.org/">RFC (Request for Comments) Series</a> is a numbered collection of technical specifications that standardize many of the procedures and protocols used in internet-based systems, including the communication protocols of the Internet Protocol Suite, e.g. HTTP, QUIC, UDP, TCP, and others.</p>
+
+<p>While the RFC Series is <a href="https://www.rfc-editor.org/search/rfc_search_detail.php">available for anyone to peruse</a>, and each RFC has its own number, it's not always easy to find all the RFCs related to a particular subject.</p>
+
+<p>The catalog below includes the most important RFCs related to the recently published HTTP/3 and QUIC protocols, the previous versions of HTTP, and the underlying transport-layer and security protocols (QUIC, UDP, and TCP for transport and TLS for security).</p>
+
+            <p><a class="read-more-link" href="/rfc-collection-http3-quic.html">Read more &raquo;</a></p>
+        </li>
+    
+        <li class="post-list-item">
+            <h2 class="post-title"><a class="post-title-link" href="/css-subgrid-vs-nested-grid.html">CSS subgrid vs nested grid — are they the same?</a></h2>
+            <h3 class="post-subtitle">A look into what is the CSS subgrid and how it differs from a nested grid</h3>
+            <p class="post-date">Published on Sep 21, 2020&nbsp;(Last updated on Sep 30, 2020)</p>
+            <p>The <a href="https://caniuse.com/css-subgrid" target="_blank">CSS subgrid</a> is a new feature coming to browsers. It's already supported by Firefox, but the Chromium team is also <a href="https://blog.chromium.org/2020/06/improving-chromiums-browser.html" target="_blank">working on the implementation</a>. The CSS subgrid allows grid items to be included in the grid layout by adopting the grid tracks and grid lines for the area they're spanning over.</p>
+<p>Obviously, the subgrid only makes sense if the grid item spreads across more than one grid cells (you can achieve that by either using the <code>grid-column</code> and <code>grid-row</code> properties or creating named grid areas).</p> 
+<p>By default, the children of grid items are not part of the grid layout. Without the subgrid feature, you need to create a nested grid and recalculate the grid tracks if you want to replicate the grid layout for the nested grid.</p>
+<p>However, a nested grid and a subgrid are not the same thing.</p>
+
+            <p><a class="read-more-link" href="/css-subgrid-vs-nested-grid.html">Read more &raquo;</a></p>
+        </li>
+    
+        <li class="post-list-item">
+            <h2 class="post-title"><a class="post-title-link" href="/kubernetes-on-premise-strategy.html">When is it worth deploying Kubernetes on-premises?</a></h2>
+            <h3 class="post-subtitle">A brief look into the use cases of the Container-as-a-Service architecture</h3>
+            <p class="post-date">Published on Aug 16, 2019</p>
+            <p>Kubernetes is a container orchestration platform that makes it possible to deploy applications to a cluster of computers. Although Kubernetes is frequently used in the cloud, it also works well in enterprise environments. There are a couple of scenarios when deploying Kubernetes on-premises is a reasonable choice as opposed to relying on cloud platforms.</p>
+
+            <p><a class="read-more-link" href="/kubernetes-on-premise-strategy.html">Read more &raquo;</a></p>
+        </li>
+    
+        <li class="post-list-item">
+            <h2 class="post-title"><a class="post-title-link" href="/vue-js-within-existing-framework.html">Should you use Vue.js within an existing framework?</a></h2>
+            <h3 class="post-subtitle">Pros and cons of adding Vue.js to your app as a second framework</h3>
+            <p class="post-date">Published on Apr 23, 2019</p>
+            <p>Vue.js has been rapidly gaining traction in recent years. Developers love it for its flexible design, impressive ecosystem, and friendly learning curve. Vue.js is not only a popular choice for creating a new application but you can also include it within an existing framework. While this decision certainly has its pros, it comes with some challenges as well.</p>
+
+            <p><a class="read-more-link" href="/vue-js-within-existing-framework.html">Read more &raquo;</a></p>
+        </li>
+    
+        <li class="post-list-item">
+            <h2 class="post-title"><a class="post-title-link" href="/jekyll-dns-config-github-pages.html">How to use a custom domain on GitHub Pages</a></h2>
+            <h3 class="post-subtitle">DNS configuration of a GitHub-hosted Jekyll site</h3>
+            <p class="post-date">Published on Sep 27, 2018</p>
+            <p>If you have a custom domain, you can quickly set it up with your <a href="https://jekyllrb.com/docs/github-pages/" target="_blank">Jekyll site hosted on GitHub Pages</a>. By default, GitHub Pages sites come with domains ending in <code>github.io</code>. To use your GitHub-hosted site with your custom domain, you only need to configure your DNS (Domain Name System) settings. Then, you can quickly check if your new domain properly works with the help of a DNS-testing service such as LeafDNS.</p>
+<p>GitHub lets you host your static website on its servers for free. Since May 2018, it also offers <a href="https://blog.github.com/2018-05-01-github-pages-custom-domains-https/" target="_blank">free HTTPS support for custom domains</a>.</p>
+
+            <p><a class="read-more-link" href="/jekyll-dns-config-github-pages.html">Read more &raquo;</a></p>
+        </li>
+    
+        <li class="post-list-item">
+            <h2 class="post-title"><a class="post-title-link" href="/link-accessibility-colors-not-enough.html">Link accessibility – Colors are not enough</a></h2>
+            <h3 class="post-subtitle">How to make hyperlinks accessible for everyone</h3>
+            <p class="post-date">Published on Oct 06, 2017&nbsp;(Last updated on Oct 23, 2019)</p>
+            <p>Link accessibility is one of the most important aspects of usability. However, designers often don't understand what it takes to make links accessible. Most frequently, they only distinguish links by color, which makes it hard for users with visual disabilities to spot them in text blocks &mdash; even if high color contrast is used.</p> 
+<p>As a rule of thumb, accessible links shouldn't rely solely on colors. Partly because users with low vision, color deficiency, and other visual impairments can't always recognize this kind of link, but also because it's easier for regular users to skim through the content if links are better emphasized.</p>
+
+            <p><a class="read-more-link" href="/link-accessibility-colors-not-enough.html">Read more &raquo;</a></p>
+        </li>
+    
+        <li class="post-list-item">
+            <h2 class="post-title"><a class="post-title-link" href="/documentation-part-of-accessibility.html">Software documentation is part of accessibility</a></h2>
+            <h3 class="post-subtitle">How to create accessible technical documentation</h3>
+            <p class="post-date">Published on Sep 06, 2017&nbsp;(Last updated on Oct 23, 2019)</p>
+            <p>We mostly discuss accessibility as a way to enable people with disabilities to use a website or application. However, the accessibility needs of users who don't have any disabilities but experience other kinds of hardships are less widely discussed.<p>
+
+<p>The lack of knowledge on a given subject is such a hardship. Providing technical documentation that addresses this problem is also an essential part of accessibility, especially in the case of open-source development. Here, users don't only act as end-users but also might want to contribute to the code as developers.</p>
+
+            <p><a class="read-more-link" href="/documentation-part-of-accessibility.html">Read more &raquo;</a></p>
+        </li>
+    
+    </ul>
+</div>
+            </article>
+        </div>
+
+    </div>
+
+    <footer>
+    <ul class="footer-content">
+        <li class="footer-list">
+            <ul>
+                <li><a class="footer-link" href="/">Blog</a></li>
+                <li><a class="footer-link" href="/articles.html">Articles</a></li>
+                <li><a class="footer-link" href="/contact.html">Contact</a></li>
+                 <li><a class="footer-link" href="/info.html">Info</a></li>
+                <li><a class="footer-link" href="/feed.json">Feed</a></li>
+            </ul>
+        </li>
+        <ul class="footer-info">
+            <li>Anna Monus | Technical Writing, Editing, Content Consultancy</li>
+        </ul>
+        <li class="copyright-notice">Copyright &copy; Annalytic.com 2016 &ndash; 2023 </li>
+    </ul>
+</footer>
+    
+    <script src="/assets/js/main.min.js"></script>
+
+    
+    
+</body>
+</html>

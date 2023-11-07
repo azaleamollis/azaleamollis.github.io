@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link accessibility – Colors are not enough | Annalytic.com</title>
+    
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="annalytic.com">
+        <meta name="twitter:url" content="https://www.annalytic.com/link-accessibility-colors-not-enough.html">
+        <meta name="twitter:site" content="@annalyticlab">
+        <meta name="twitter:title" content="Link accessibility – Colors are not enough">
+        <meta name="twitter:description" content="How to make hyperlinks accessible for everyone">
+        <meta name="twitter:image" content="https://www.annalytic.com/assets/img/social/og-abstract-blue.jpg">
+        <meta property="og:url" content="https://www.annalytic.com/link-accessibility-colors-not-enough.html">
+        <meta property="og:title" content="Link accessibility – Colors are not enough">
+        <meta property="og:description" content="How to make hyperlinks accessible for everyone">
+        <meta property="og:type" content="article">
+        <meta property="og:image" content="https://www.annalytic.com/assets/img/social/og-abstract-blue.jpg">
+        <meta property="og:image:secure_url" content="https://www.annalytic.com/assets/img/social/og-abstract-blue.jpg">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+    
+    <link rel='icon' href="/assets/img/site-elements/favicon.ico" type='image/x-icon'>
+    <link rel="stylesheet" href="/assets/css/style.min.css">
+    
+        <link href="/assets/css/vendor/prismjs/prism-material-dark.min.css" rel="stylesheet">
+        <link href="/assets/css/vendor/simple-lightbox/simple-lightbox.min.css" rel="stylesheet">
+    
+</head>
+
+<body>
+
+    <div class="main-content">
+
+        <header>
+    <div class="site-id">
+        <h1 class="site-title"><a href="/">Annalytic.com</a></h1>
+        <h2 class="site-subtitle">Anna Monus | Technical Writing &amp; Editing</h2> 
+    </div>
+    <nav class="top-menu">
+        <ul class="top-menu-list">
+            <li class="top-menu-item"><a href="/">Blog</a></li>
+            <li class="top-menu-item"><a href="/articles.html">Articles</a></li>
+            <li class="top-menu-item"><a href="/contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+        <div class="container">
+            <article>
+                 <h1 class="post-title">Link accessibility – Colors are not enough</h1>
+ <h2 class="post-subtitle">How to make hyperlinks accessible for everyone</h2>
+ <p class="post-meta">Posted by Anna Monus on Oct 06, 2017 
+     
+    (Last updated on Oct 23, 2019) 
+    
+</p>
+
+<div class="post-container single-post">
+     
+
+    <p>Link accessibility is one of the most important aspects of usability. However, designers often don't understand what it takes to make links accessible. Most frequently, they only distinguish links by color, which makes it hard for users with visual disabilities to spot them in text blocks &mdash; even if high color contrast is used.</p> 
+<p>As a rule of thumb, accessible links shouldn't rely solely on colors. Partly because users with low vision, color deficiency, and other visual impairments can't always recognize this kind of link, but also because it's easier for regular users to skim through the content if links are better emphasized.</p>
+<p>However, it's not always easy to find out how to create accessible links that match your website design. It's also possible to overdo it by using too many visual signifiers that might confuse the user.</p>
+<h2>Link types</h2>
+<p>When we speak about links, we usually think of the classic blue links with an underline, however there are actually different kinds of links, such as:</p>
+<ul>
+    <li>body text links,</li>
+    <li>headline and subtitle links,</li>
+    <li>menu links,</li>
+    <li>buttons,</li>
+    <li>image links,</li>
+    <li>video links,</li>
+    <li>audio links,</li>
+    <li>and more.</li>
+</ul>
+<p>In this article, I'll only speak about the first group: body text links. Don't read it as a guideline but rather an experiment for understanding what can be done for more accessible links.</p>
+<h2>Accessible links according to WCAG 2.0</h2>
+<p>According to <a href="https://webaim.org/techniques/hypertext/link_text" target="_blank">WebAIM's guidelines about links and hypertext</a>, WCAG 2.0 has two additional requirements for body text links:</p>
+<ol>
+    <li>The link text must have a 3:1 contrast ratio from the surrounding non-link text.</li>
+    <li>The link must present a "non-color designator" (typically the introduction of the underline) on both mouse hover and keyboard focus.</li>
+</ol>
+<p>Web browsers come with a default link styling that meets these requirements. You can check it out by disabling all additional CSS styles using the <a href="https://chrispederick.com/work/web-developer/" target="_blank">Web Developer</a> browser add-on or another dev tool. For example, this is how the homepage of the Mozilla Developer Network looks like in Chrome:</p>
+<figure><img class="img-fluid" src="/assets/img/posts/link-accessibility-colors-not-enough/basic-chrome-styling.jpg" alt="Basic Chrome Styling"></figure>
+<p>It's a very basic styling for sure, but it's still styling: the underlined blue links are well-known and internet users can easily recognize them. It's not a coincidence that the Nielsen-Norman Group also names blue the safest link color choice in its "<a href="https://www.nngroup.com/articles/clickable-elements/" target="_blank">Beyond Blue Links: Making Clickable Elements Recognizable</a>" article.</p>
+<h2>Examples of accessible links</h2>
+<p>WebAIM doesn't recommend removing the underline using CSS, as "users are accustomed to see links underlined". Still, many of the biggest websites don't follow this principle of link accessibility. Many times, they don't only remove the underline from the default link state but also the <code>:hover</code> styles.</p>
+<p>But, why do they do that? Mainly for aesthetical reasons, however underlined links don't necessarily have to be plain-looking and boring.</p>
+<h3>1. Border-bottom</h3>
+<p>For instance, Bloomberg uses the <code>border-bottom</code> property to mimic an underline in a different color. As you can see below, the link texts are black while the underlines are blue, which gives a stylish design to the links.</p>
+<figure><img class="img-fluid" src="/assets/img/posts/link-accessibility-colors-not-enough/bloomberg-link-signifier.jpg" alt="Bloomberg border bottom as link signifier"></figure>
+<p>Perhaps Bloomberg's links could further benefit from bold letters, but it's a good example that underlines can be used for links creatively, not just in the usual way.</p>
+<h3>2. Reverse underline</h3>
+<p>The Verge uses a different approach to create underlines for body text links. Here, underlines are present by default, however they are removed when the user hovers over the link. When the underline disappears, the color also changes subtlely, from pink to magenta (however this color change is barely recognizable).</p>
+<figure><img class="img-fluid" src="/assets/img/posts/link-accessibility-colors-not-enough/the-verge-link-underline.jpg" alt="Underlined links in The Verge"></figure>
+<p>The presence of underlines in the default state helps readers easily notice the links, even within large text blocks. And, when they hover over the link, the state change is instantly visualized by the disappearing underline. An unusual choice, for sure, but it still follows the principle of using non-color designators for accessible links.</p>
+<h3>3. Icons</h3>
+<p>You can also help users recognize links by adding tiny icons next to them. For example, some news sites add a video icon next to the links that point to videos (however, embedding videos is a more widely used practice these days).</p>
+<p>WebAIM chose an all-inclusive solution for link accessibility. Besides the underline, they also add a small icon after each external link. In this way, the icon doesn't only serve as an extra visual signifier but also clearly distinguishes external and internal links.</p>
+<figure><img class="img-fluid" src="/assets/img/posts/link-accessibility-colors-not-enough/webaim-external-link-icon.jpg" alt="WebAIM external link icon"></figure>
+<p>You don't necessarily need to create a link icon by yourself. For instance, Font Awesome has an <a href="https://fontawesome.com/icons/external-link-alt?style=solid&from=io" target="_blank">external link icon</a> that you can quickly add to your links.</p>
+<figure><img class="img-fluid" src="/assets/img/posts/link-accessibility-colors-not-enough/font-awesome-external-link.jpg" alt="Font Awesome external links"></figure>
+<h3>4. Link text</h3>
+<p>As screen readers notify users when they come across a link, it's not recommended to use phrases such as "link to" or "follow this link" for the link text. Instead, you should provide link texts that describe the main content of the link. It makes it easier for users to decide if they want to click the link, which is especially important for users with <a href="https://webaim.org/articles/cognitive/" target="_blank">cognitive disabilities</a>.</p>
+<p>WCAG 2.0 even has a recommendation on how to <a href="https://www.w3.org/TR/2008/WD-WCAG20-TECHS-20081103/H30.html" target="_blank">provide proper link texts</a>, with a handful of useful examples (mainly for image links, though).</p>
+<p>If you want to see an example of proper link text I would mention the Gov.uk website that publishes governmental information in the UK. For example, check out their <a href="https://www.gov.uk/set-up-business" target="_blank">Set up a business</a> page.</p>
+<figure><img class="img-fluid" src="/assets/img/posts/link-accessibility-colors-not-enough/gov.uk-link-texts.jpg" alt="Gov.uk Link Texts"></figure>
+<p>Have a look at, for instance, the <em>Find out more about being a sole trader and how to register</em> line on the screenshot above. Note that they put the anchor tag on the part that describes the purpose of the link ("being a sole trader and how to register") instead of the action verb ("find out more").</p>
+<h2>The controversial role of the <code>title</code> attribute</h2>
+<p>The role of the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title" target="_blank"><code>title</code> global attribute</a> in link accessibility is an interesting question. If you add it to a link, the extra information appears somewhere around the link when users hover it.</p>
+<p>For instance, take the following line of HTML:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Extra information<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Hover this link but don't click it.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span></code></pre>
+<p>It's displayed like this in the browser: <a href="#" title="Extra information">Hover this link but don't click it.</a></p>
+<p>I've long thought that adding the <code>title</code> attribute to links is a good practice for accessibility, as the extra information helps users understand the purpose of the link.  However, WCAG 2.0 has a slightly different view on the question.</p>
+<p>On their "<a href="https://www.w3.org/TR/2008/WD-WCAG20-TECHS-20081103/H33.html" target="_blank">Supplementing link text with the title attribute</a>" page, they mention several accessibility problems. For example, the <code>title</code> attribute isn't available to assistive technology and keyboard-only users. Besides, it disappears after about five seconds in some user agents, which usually doesn't leave enough time to read it.</p>
+<p>On the whole, WCAG 2.0 doesn't advise against the <code>title</code> attribute but recommends careful usage. One thing is sure, never use <code>title</code> for important information that is not available in another form, such as warnings. On another note, if <code>title</code> can be used only for unimportant information, is it worth using at all?</p>
+<h2>Link states</h2>
+<p>There are five different link states, represented by CSS pseudo-classes: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:hover" target="_blank"><code>:hover</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus" target="_blank"><code>:focus</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:active" target="_blank"><code>:active</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:visited" target="_blank"><code>:visited</code></a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:link" target="_blank"><code>:link</code></a>.</p>
+<p>It's an open question whether it's better for accessibility to style all link states differently or not. If you use different style rules for each state, users are notified about every change indeed, however is that always a good thing? Too many state changes can cause information overload and confusion to the user.</p>
+<p>Personally, I tend to create one style for the default link state, a second one for the <code>:hover</code>, <code>:active</code>, and <code>:focus</code> states, and sometimes a third one for <code>:visited</code> links. However, I still can't tell if this is the best solution for accessibility. If you are interested in the topic here's an <a href="https://ux.stackexchange.com/questions/73403/should-focus-and-hover-styles-be-the-same-or-distinct" target="_blank">interesting StackOverflow UX discussion</a> on whether the styling of the <code>:focus</code> and <code>:hover</code> states should be the same or distinct.</p>
+<p>However, there's an important thing you should keep in mind by all means. <strong>Don't remove the dotted outline that browsers use for the <code>:focus</code> state</strong>. Keyboard (tab) navigation will be useless if the focused element is not visible on the screen. If you remove the dotted outline, keyboard users will literally lose focus. If you're annoyed by the default outline style <a href="https://a11yproject.com/posts/never-remove-css-outlines/" target="_blank">make it less obtrusive with extra styling</a>, but don't remove it.</p>
+<h2>Read more</h2>
+<p>On this blog, I cover accessibility-related topics that are less widely discussed. If you want to read more, check out my article about why <a href="https://www.annalytic.com/documentation-part-of-accessibility.html" target="_blank">software documentation is part of accessibility</a>, too.</p>
+</div>
+            </article>
+        </div>
+
+    </div>
+
+    <footer>
+    <ul class="footer-content">
+        <li class="footer-list">
+            <ul>
+                <li><a class="footer-link" href="/">Blog</a></li>
+                <li><a class="footer-link" href="/articles.html">Articles</a></li>
+                <li><a class="footer-link" href="/contact.html">Contact</a></li>
+                 <li><a class="footer-link" href="/info.html">Info</a></li>
+                <li><a class="footer-link" href="/feed.json">Feed</a></li>
+            </ul>
+        </li>
+        <ul class="footer-info">
+            <li>Anna Monus | Technical Writing, Editing, Content Consultancy</li>
+        </ul>
+        <li class="copyright-notice">Copyright &copy; Annalytic.com 2016 &ndash; 2023 </li>
+    </ul>
+</footer>
+    
+    <script src="/assets/js/main.min.js"></script>
+
+    
+        <script src="/assets/js/vendor/simple-lightbox/simple-lightbox.min.js"></script>
+        <script>(function() { var $lightbox = new SimpleLightbox('.lightbox a', {'closeText': 'x', 'maxZoom': '1', 'overlayOpacity': 0.75, 'captionPosition': 'outside', 'heightRatio': 0.8});})();</script>
+    
+    
+</body>
+</html>

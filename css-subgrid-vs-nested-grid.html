@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS subgrid vs nested grid — are they the same? | Annalytic.com</title>
+    
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="annalytic.com">
+        <meta name="twitter:url" content="https://www.annalytic.com/css-subgrid-vs-nested-grid.html">
+        <meta name="twitter:site" content="@annalyticlab">
+        <meta name="twitter:title" content="CSS subgrid vs nested grid — are they the same?">
+        <meta name="twitter:description" content="A look into what is the CSS subgrid and how it differs from a nested grid">
+        <meta name="twitter:image" content="https://www.annalytic.com/assets/img/social/og-grid.jpg">
+        <meta property="og:url" content="https://www.annalytic.com/css-subgrid-vs-nested-grid.html">
+        <meta property="og:title" content="CSS subgrid vs nested grid — are they the same?">
+        <meta property="og:description" content="A look into what is the CSS subgrid and how it differs from a nested grid">
+        <meta property="og:type" content="article">
+        <meta property="og:image" content="https://www.annalytic.com/assets/img/social/og-grid.jpg">
+        <meta property="og:image:secure_url" content="https://www.annalytic.com/assets/img/social/og-grid.jpg">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+    
+    <link rel='icon' href="/assets/img/site-elements/favicon.ico" type='image/x-icon'>
+    <link rel="stylesheet" href="/assets/css/style.min.css">
+    
+        <link href="/assets/css/vendor/prismjs/prism-material-dark.min.css" rel="stylesheet">
+        <link href="/assets/css/vendor/simple-lightbox/simple-lightbox.min.css" rel="stylesheet">
+    
+</head>
+
+<body>
+
+    <div class="main-content">
+
+        <header>
+    <div class="site-id">
+        <h1 class="site-title"><a href="/">Annalytic.com</a></h1>
+        <h2 class="site-subtitle">Anna Monus | Technical Writing &amp; Editing</h2> 
+    </div>
+    <nav class="top-menu">
+        <ul class="top-menu-list">
+            <li class="top-menu-item"><a href="/">Blog</a></li>
+            <li class="top-menu-item"><a href="/articles.html">Articles</a></li>
+            <li class="top-menu-item"><a href="/contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+        <div class="container">
+            <article>
+                 <h1 class="post-title">CSS subgrid vs nested grid — are they the same?</h1>
+ <h2 class="post-subtitle">A look into what is the CSS subgrid and how it differs from a nested grid</h2>
+ <p class="post-meta">Posted by Anna Monus on Sep 21, 2020 
+     
+    (Last updated on Sep 30, 2020) 
+    
+</p>
+
+<div class="post-container single-post">
+     
+
+    <p>The <a href="https://caniuse.com/css-subgrid" target="_blank">CSS subgrid</a> is a new feature coming to browsers. It's already supported by Firefox, but the Chromium team is also <a href="https://blog.chromium.org/2020/06/improving-chromiums-browser.html" target="_blank">working on the implementation</a>. The CSS subgrid allows grid items to be included in the grid layout by adopting the grid tracks and grid lines for the area they're spanning over.</p>
+<p>Obviously, the subgrid only makes sense if the grid item spreads across more than one grid cells (you can achieve that by either using the <code>grid-column</code> and <code>grid-row</code> properties or creating named grid areas).</p> 
+<p>By default, the children of grid items are not part of the grid layout. Without the subgrid feature, you need to create a nested grid and recalculate the grid tracks if you want to replicate the grid layout for the nested grid.</p>
+<p>However, a nested grid and a subgrid are not the same thing.</p>
+<h2>What is CSS subgrid?</h2>
+<p>CSS subgrid is a value you can add to the <code>grid-template-columns</code> and <code>grid-template-rows</code> properties of one or more grid item, for instance:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">.grid-container</span> <span class="token punctuation">{</span><br>	<span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span><br>	<span class="token property">grid-template-columns</span><span class="token punctuation">:</span> <span class="token function">repeat</span><span class="token punctuation">(</span>5<span class="token punctuation">,</span> 1fr<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  	<span class="token property">grid-template-rows</span><span class="token punctuation">:</span> <span class="token function">repeat</span><span class="token punctuation">(</span>3<span class="token punctuation">,</span> 1fr<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><span class="token selector">.grid-item</span> <span class="token punctuation">{</span><br>	<span class="token property">grid-column</span><span class="token punctuation">:</span> 2 / 5<span class="token punctuation">;</span>	<br>  	<span class="token property">grid-row</span><span class="token punctuation">:</span> 1 / 3<span class="token punctuation">;</span><br>	<span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span><br>	<span class="token property">grid-template-columns</span><span class="token punctuation">:</span> subgrid<span class="token punctuation">;</span><br>	<span class="token property">grid-template-rows</span><span class="token punctuation">:</span> subgrid<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>Using this syntax, <code>.grid-item</code> will adopt the grid tracks (rows and columns) of the grid container for the area it spans over (in the above example, three columns vertically and two rows horizontally, defined by the <code>grid-row</code> and <code>grid-column</code> properties).</p>
+<h2>What is a nested grid?</h2>
+<p>A nested grid replicates the grid tracks of the parent grid, however it's still an independent grid.</p>
+<p>You can use the <code>inherit</code> value for the <code>grid-template-columns</code> and <code>grid-template-rows</code> properties of one or more grid items to create a nested grid, as follows:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">.grid-container</span> <span class="token punctuation">{</span><br>	<span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span><br>	<span class="token property">grid-template-columns</span><span class="token punctuation">:</span> <span class="token function">repeat</span><span class="token punctuation">(</span>5<span class="token punctuation">,</span> 1fr<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  	<span class="token property">grid-template-rows</span><span class="token punctuation">:</span> <span class="token function">repeat</span><span class="token punctuation">(</span>3<span class="token punctuation">,</span> 1fr<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><span class="token selector">.grid-item</span> <span class="token punctuation">{</span><br>	<span class="token property">grid-column</span><span class="token punctuation">:</span> 2 / 5<span class="token punctuation">;</span>	<br>  	<span class="token property">grid-row</span><span class="token punctuation">:</span> 1 / 3<span class="token punctuation">;</span><br>	<span class="token property">display</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span><br>	<span class="token property">grid-template-columns</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span><br>	<span class="token property">grid-template-rows</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>Using this syntax, <code>.grid-item</code> will copy the grid tracks of <code>.grid-container</code>. However, it will divide up its own area into five columns and three rows instead of being included in the grid layout of <code>.grid-container</code> as a subgrid.</p>
+<h2>The difference between a subgrid and a nested grid</h2>
+<p>While a nested grid is still independent of the parent grid (we have two grids), a subgrid is a part of it (we have one grid) as it gets included in the same layout &mdash; using the same rows, columns, and lines.</p>
+<p>For instance, here's an example of a nested grid when being inspected with Google Chrome's grid inspector. As you can see, the parent and nested grid have independent tracks (marked with white vs red):</p>
+<figure><img class="img-fluid" src="/assets/img/posts/css-subgrid-vs-nested-grid/nested-css-grid.jpg" alt="Nested CSS grid"></figure>
+<p>While, if we create a subgrid, it uses the same grid tracks as the parent grid:</p>
+<figure><img class="img-fluid" src="/assets/img/posts/css-subgrid-vs-nested-grid/subgrid-css-grid-simulation.png" alt="CSS grid subgrid simulation"></figure>
+<h2>Read more</h2>
+<p>This post is the recap of my longer article about <a href="https://webdesign.tutsplus.com/articles/css-subgrid-features-syntax-and-the-problem-itll-solve--cms-33038" target="_blank">CSS subgrid</a> published on TutsPlus Web Design where I analyze the question in detail (the two screenshots above are from this piece as well). I also show how to simulate a subgrid without having access to the <code>subgrid</code> value (even though this simulation is not perfect, as we still have two independent grids).</p>
+
+</div>
+            </article>
+        </div>
+
+    </div>
+
+    <footer>
+    <ul class="footer-content">
+        <li class="footer-list">
+            <ul>
+                <li><a class="footer-link" href="/">Blog</a></li>
+                <li><a class="footer-link" href="/articles.html">Articles</a></li>
+                <li><a class="footer-link" href="/contact.html">Contact</a></li>
+                 <li><a class="footer-link" href="/info.html">Info</a></li>
+                <li><a class="footer-link" href="/feed.json">Feed</a></li>
+            </ul>
+        </li>
+        <ul class="footer-info">
+            <li>Anna Monus | Technical Writing, Editing, Content Consultancy</li>
+        </ul>
+        <li class="copyright-notice">Copyright &copy; Annalytic.com 2016 &ndash; 2023 </li>
+    </ul>
+</footer>
+    
+    <script src="/assets/js/main.min.js"></script>
+
+    
+        <script src="/assets/js/vendor/simple-lightbox/simple-lightbox.min.js"></script>
+        <script>(function() { var $lightbox = new SimpleLightbox('.lightbox a', {'closeText': 'x', 'maxZoom': '1', 'overlayOpacity': 0.75, 'captionPosition': 'outside', 'heightRatio': 0.8});})();</script>
+    
+    
+</body>
+</html>

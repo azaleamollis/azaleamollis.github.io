@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When is it worth deploying Kubernetes on-premises? | Annalytic.com</title>
+    
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="annalytic.com">
+        <meta name="twitter:url" content="https://www.annalytic.com/kubernetes-on-premise-strategy.html">
+        <meta name="twitter:site" content="@annalyticlab">
+        <meta name="twitter:title" content="When is it worth deploying Kubernetes on-premises?">
+        <meta name="twitter:description" content="A brief look into the use cases of the Container-as-a-Service architecture">
+        <meta name="twitter:image" content="https://www.annalytic.com/assets/img/social/og-containers.jpg">
+        <meta property="og:url" content="https://www.annalytic.com/kubernetes-on-premise-strategy.html">
+        <meta property="og:title" content="When is it worth deploying Kubernetes on-premises?">
+        <meta property="og:description" content="A brief look into the use cases of the Container-as-a-Service architecture">
+        <meta property="og:type" content="article">
+        <meta property="og:image" content="https://www.annalytic.com/assets/img/social/og-containers.jpg">
+        <meta property="og:image:secure_url" content="https://www.annalytic.com/assets/img/social/og-containers.jpg">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+    
+    <link rel='icon' href="/assets/img/site-elements/favicon.ico" type='image/x-icon'>
+    <link rel="stylesheet" href="/assets/css/style.min.css">
+    
+        <link href="/assets/css/vendor/prismjs/prism-material-dark.min.css" rel="stylesheet">
+        <link href="/assets/css/vendor/simple-lightbox/simple-lightbox.min.css" rel="stylesheet">
+    
+</head>
+
+<body>
+
+    <div class="main-content">
+
+        <header>
+    <div class="site-id">
+        <h1 class="site-title"><a href="/">Annalytic.com</a></h1>
+        <h2 class="site-subtitle">Anna Monus | Technical Writing &amp; Editing</h2> 
+    </div>
+    <nav class="top-menu">
+        <ul class="top-menu-list">
+            <li class="top-menu-item"><a href="/">Blog</a></li>
+            <li class="top-menu-item"><a href="/articles.html">Articles</a></li>
+            <li class="top-menu-item"><a href="/contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+        <div class="container">
+            <article>
+                 <h1 class="post-title">When is it worth deploying Kubernetes on-premises?</h1>
+ <h2 class="post-subtitle">A brief look into the use cases of the Container-as-a-Service architecture</h2>
+ <p class="post-meta">Posted by Anna Monus on Aug 16, 2019 
+    
+</p>
+
+<div class="post-container single-post">
+     
+
+    <p>Kubernetes is a container orchestration platform that makes it possible to deploy applications to a cluster of computers. Although Kubernetes is frequently used in the cloud, it also works well in enterprise environments. There are a couple of scenarios when deploying Kubernetes on-premises is a reasonable choice as opposed to relying on cloud platforms.</p>
+<h2>The Container-as-a-Service model</h2>
+<p>The Container-as-a-Service (CaaS) architecture allows developers to make use of container-based virtualization. Containers are different from virtual machines, as they virtualize operating systems rather than hardware configurations. As they don’t have their own kernel, they share the OS of the host machine with other containers.</p>
+<p>Containers package app-level code and dependencies together and run as isolated processes. Their main advantages are as follows:</p>
+<ul>
+<li>easy portability,</li>
+<li>small size,</li>
+<li>better performance (compared to VMs),</li>
+<li>scalability,</li>
+<li>and platform-independence.</li>
+</ul>
+<p>Containers are an especially popular choice of software for microservices. The most well-known Container-as-a-Service platform is Docker.</p>
+<p>Kubernetes takes containerization to the next level. It comes into the picture when you work with a huge number of containers. Kubernetes lets you logically group containers and deploys them to a computer cluster consisting of one master and several working nodes.</p>
+<p>With Kubernetes, your application doesn’t rely on one single machine and you don’t have to worry about uptime. Kubernetes automatically distributes your containers across the cluster, so you can be sure that your app is up and running all the time.</p>
+<h2>Deployment strategies for Kubernetes</h2>
+<p>You can run Kubernetes on <a href="https://kubernetes.io/docs/setup/" target="_blank">multiple different platforms</a>. For example, you can:</p>
+<ul>
+<li>use managed Kubernetes clusters offered by public cloud platforms,</li>
+<li>create a custom cloud solution making use of private or hybrid cloud architectures,</li>
+<li>or deploy it to your on-premise data center.</li>
+</ul>
+<p>Companies, especially start-ups, frequently deploy container-based applications to the cloud, as it comes with many benefits. For instance, you can use pre-made cloud APIs, don’t have to worry about server maintenance, and can ensure high availability.</p>
+<p>However, as your application scales, costs of pay-as-you-go cloud services can rapidly grow. You might also face problems like security and privacy issues on certain public cloud platforms.</p>
+<p>Under certain circumstances, cloud deployment is simply not worth the effort, as it comes with too many risks and costs. Bringing containers on-premises can be a good decision when your application:</p>
+<ul>
+<li>interoperates with other on-premise applications or databases,</li>
+<li>is a legacy monolithic application that would be too hard to move to the cloud,</li>
+<li>becomes so popular that cloud server costs get too high,</li>
+<li>relies on real-time user interactions, so data proximity matters a lot,</li>
+<li>or handles highly sensitive data that can’t risk exposure.</li>
+</ul>
+<h2>Final tips</h2>
+<p>Successful on-premise deployment mainly depends on finding the right tools and setting up a suitable automated workflow. Popular cloud service platforms provide you with on-premise tools such as AWS Outposts and Azure Stack that let you run cloud-native applications on-premises.</p>
+<p>Adopting DevOps culture can also help you implement the right deployment strategy in both the cloud and on-premises, as it treats development, operations, and security as a single unit. In reality, there’s no such thing as "serverless". Whether you should manage your own datacenter or rely on a cloud platform depends on many parameters and can change with the environment as well.</p>
+</div>
+            </article>
+        </div>
+
+    </div>
+
+    <footer>
+    <ul class="footer-content">
+        <li class="footer-list">
+            <ul>
+                <li><a class="footer-link" href="/">Blog</a></li>
+                <li><a class="footer-link" href="/articles.html">Articles</a></li>
+                <li><a class="footer-link" href="/contact.html">Contact</a></li>
+                 <li><a class="footer-link" href="/info.html">Info</a></li>
+                <li><a class="footer-link" href="/feed.json">Feed</a></li>
+            </ul>
+        </li>
+        <ul class="footer-info">
+            <li>Anna Monus | Technical Writing, Editing, Content Consultancy</li>
+        </ul>
+        <li class="copyright-notice">Copyright &copy; Annalytic.com 2016 &ndash; 2023 </li>
+    </ul>
+</footer>
+    
+    <script src="/assets/js/main.min.js"></script>
+
+    
+        <script src="/assets/js/vendor/simple-lightbox/simple-lightbox.min.js"></script>
+        <script>(function() { var $lightbox = new SimpleLightbox('.lightbox a', {'closeText': 'x', 'maxZoom': '1', 'overlayOpacity': 0.75, 'captionPosition': 'outside', 'heightRatio': 0.8});})();</script>
+    
+    
+</body>
+</html>
